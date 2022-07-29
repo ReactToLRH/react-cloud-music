@@ -1,23 +1,21 @@
-import React from "react";
-import { Provider } from "react-redux";
-// renderRoutes 读取路由配置转化为 Route 标签
-import { renderRoutes } from "react-router-config";
-import { HashRouter } from "react-router-dom";
-import routes from "./routes/index.js";
-import { GlobalStyle } from "./style";
-import { IconStyle } from "./assets/iconfont/iconfont";
-import store from "./store/index";
+import React from 'react'
+import { Provider } from 'react-redux'
+import { HashRouter } from 'react-router-dom'
 
-function App() {
+import store from './store'
+import Router from './router'
+
+const App = () => {
+  console.log('App')
   return (
-    <Provider store={store}>
-      <HashRouter>
-        <GlobalStyle></GlobalStyle>
-        <IconStyle></IconStyle>
-        {renderRoutes(routes)}
-      </HashRouter>
-    </Provider>
-  );
+    <React.StrictMode>
+      <Provider store={store}>
+        <HashRouter>
+          <Router />
+        </HashRouter>
+      </Provider>
+    </React.StrictMode>
+  )
 }
 
-export default App;
+export default App
