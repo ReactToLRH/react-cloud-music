@@ -6,7 +6,7 @@ module.exports = {
   babel: {},
   webpack: {
     alias: {
-      '@': resolve(__dirname, 'src')
+      '@': resolve('src')
     }
   },
   style: {
