@@ -56,7 +56,7 @@ module.exports = {
     'import/no-unresolved': [
       2,
       {
-        ignore: ['^@']
+        ignore: ['^@', 'swiper']
       }
     ],
     'jsx-a11y/no-static-element-interactions': 0,
@@ -80,6 +80,13 @@ module.exports = {
     'no-continue': 0,
     // ban this for Number.isNaN needs polyfill
     'no-restricted-globals': 0,
+    'no-unused-expressions': [
+      2,
+      {
+        allowShortCircuit: true,
+        allowTernary: true
+      }
+    ],
     'max-classes-per-file': 0,
 
     'jest/no-test-callback': 0,
