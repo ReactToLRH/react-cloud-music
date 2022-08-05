@@ -9,15 +9,13 @@ import store from './store'
 import Router from './router'
 
 const App = () => (
-  <React.StrictMode>
-    <Provider store={store}>
-      <HashRouter>
-        <ResetCss />
-        <IconStyle />
-        <Router />
-      </HashRouter>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <HashRouter>
+      <ResetCss />
+      <IconStyle />
+      <Router />
+    </HashRouter>
+  </Provider>
 )
 
 export default App
