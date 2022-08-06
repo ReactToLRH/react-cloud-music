@@ -19,3 +19,25 @@ export const getRecommendListRequest = (params, custom) =>
     },
     custom
   )
+
+export const getHotSingerListRequest = (params, custom) =>
+  request(
+    {
+      url: '/top/artists',
+      method: 'get',
+      params
+    },
+    custom
+  )
+
+export const getSingerListRequest = (params, custom) => {
+  console.log('params: ', params)
+  return request(
+    {
+      url: '/artist/list',
+      method: 'get',
+      params
+    },
+    custom
+  )
+}
