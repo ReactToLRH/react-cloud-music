@@ -17,7 +17,6 @@ export const getRecommendListRequestAsync = createAsyncThunk(
   'recommend/getRecommendList',
   async () => {
     const getRecommendListRes = await getRecommendListRequest()
-    console.log('getRecommendListRes: ', getRecommendListRes)
     const { result } = getRecommendListRes
     return result
   }
