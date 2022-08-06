@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
 
@@ -13,7 +13,9 @@ const App = () => (
     <HashRouter>
       <ResetCss />
       <IconStyle />
-      <Router />
+      <Suspense fallback={null}>
+        <Router />
+      </Suspense>
     </HashRouter>
   </Provider>
 )
