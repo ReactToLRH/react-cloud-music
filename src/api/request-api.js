@@ -30,9 +30,8 @@ export const getHotSingerListRequest = (params, custom) =>
     custom
   )
 
-export const getSingerListRequest = (params, custom) => {
-  console.log('params: ', params)
-  return request(
+export const getSingerListRequest = (params, custom) =>
+  request(
     {
       url: '/artist/list',
       method: 'get',
@@ -40,4 +39,13 @@ export const getSingerListRequest = (params, custom) => {
     },
     custom
   )
-}
+
+export const getRankListRequest = (params, custom) =>
+  request(
+    {
+      url: '/toplist/detail',
+      method: 'get',
+      params
+    },
+    custom
+  )
