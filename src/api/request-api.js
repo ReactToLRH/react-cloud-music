@@ -49,3 +49,13 @@ export const getRankListRequest = (params, custom) =>
     },
     custom
   )
+
+export const getAlbumDetailRequest = (params, custom) =>
+  request(
+    {
+      url: '/playlist/detail',
+      method: 'get',
+      params
+    },
+    custom
+  )

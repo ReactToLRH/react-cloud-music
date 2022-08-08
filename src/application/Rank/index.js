@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { Outlet, useNavigate } from 'react-router'
 
 import Scroll from '@/baseUI/Scroll'
 import { List, ListItem, SongList, Container } from './style'
@@ -8,14 +9,20 @@ import { getRankListRequestAsync } from './store'
 import { filterIndex } from '@/utils/util'
 
 const Rank = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const { rankList } = useSelector(state => state.rank, shallowEqual)
 
-  const dispatch = useDispatch()
   useEffect(() => {
     if (!rankList.length) {
       dispatch(getRankListRequestAsync())
     }
   }, [dispatch])
+
+  const enterDetail = detail => {
+    navigate(`/rank/${detail.id}`)
+  }
 
   const renderSongList = list =>
     list.length ? (
@@ -57,6 +64,7 @@ const Rank = () => {
           {renderRankList(globalList, true)}
         </div>
       </Scroll>
+      <Outlet />
     </Container>
   )
 }
