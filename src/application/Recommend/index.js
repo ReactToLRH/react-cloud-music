@@ -1,4 +1,5 @@
 import React, { memo, useEffect } from 'react'
+import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { forceCheck } from 'react-lazyload'
 
@@ -29,6 +30,7 @@ const Recommend = () => {
           <RecommendList recommendList={recommendList} />
         </div>
       </Scroll>
+      <Outlet />
     </Content>
   )
 }
