@@ -1,5 +1,6 @@
 import React, { memo, useRef, useEffect } from 'react'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+import { Outlet, useNavigate } from 'react-router'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 
 import HorizenItem from '@/baseUI/HorizenItem'
@@ -20,17 +21,23 @@ import {
 const singerDefaultImg = require('./singer.png')
 
 const Singers = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const scrollRef = useRef(null)
   const { singerCategory, singerInitials, singerList, hasMore, pullUpLoading, pullDownLoading } =
     useSelector(state => state.singers, shallowEqual)
-
-  const dispatch = useDispatch()
 
   useEffect(() => {
     if (!singerList.length && !singerCategory && !singerInitials) {
       dispatch(getHotSingerListRequestAsync())
     }
   }, [dispatch])
+
+  const enterDetail = id => {
+    console.log('singers detail id: ', id)
+    navigate(`/singers/${id}`)
+  }
 
   const updateSingerCategory = newVal => {
     dispatch(changeSingerCategory(newVal))
@@ -110,6 +117,7 @@ const Singers = () => {
           {renderSingerList(singerList)}
         </Scroll>
       </ListContainer>
+      <Outlet />
     </div>
   )
 }

@@ -59,3 +59,13 @@ export const getAlbumDetailRequest = (params, custom) =>
     },
     custom
   )
+
+export const getSingerInfoRequest = (params, custom) =>
+  request(
+    {
+      url: '/artists',
+      method: 'get',
+      params
+    },
+    custom
+  )

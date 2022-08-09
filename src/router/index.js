@@ -6,6 +6,7 @@ const Recommend = React.lazy(() => import('@/application/Recommend'))
 const Singers = React.lazy(() => import('@/application/Singers'))
 const Rank = React.lazy(() => import('@/application/Rank'))
 const Album = React.lazy(() => import('@/application/Album'))
+const Singer = React.lazy(() => import('@/application/Singer'))
 
 const router = [
   {
@@ -23,7 +24,16 @@ const router = [
           }
         ]
       },
-      { path: '/singers', element: <Singers /> },
+      {
+        path: '/singers',
+        element: <Singers />,
+        children: [
+          {
+            path: '/singers/:id',
+            element: <Singer />
+          }
+        ]
+      },
       {
         path: '/rank',
         element: <Rank />,
