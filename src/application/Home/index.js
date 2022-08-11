@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
 
+import Player from '../Player'
 import { Top, Tab, TabItem } from './style'
 
 const Home = () => (
@@ -27,6 +28,7 @@ const Home = () => (
         </TabItem>
       </NavLink>
     </Tab>
+    <Player />
     <Outlet />
   </div>
 )
