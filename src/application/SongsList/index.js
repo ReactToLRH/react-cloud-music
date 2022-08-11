@@ -1,24 +1,21 @@
 import React, { useState, useEffect, memo, forwardRef } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { SongList, SongItem } from './style'
 
 import { getName } from '@/utils/util'
 import { PLAYLIST_ONE_PAGE_COUNT } from '@/config/const'
 
+import { changePlayList, changeSequencePlayList, changeCurrentIndex } from '../Player/store'
+
 const SongsList = forwardRef((props, refs) => {
-  const {
-    songs,
-    collectCount,
-    musicAnimation,
-    loading = false,
-    showCollect,
-    showBackground,
-    usePageSplit
-  } = props
+  const { songs, collectCount, loading = false, showCollect, showBackground, usePageSplit } = props
+  const { addMusicAnimation } = props
   const totalCount = songs.length
-  console.log('musicAnimation: ', musicAnimation)
 
   const [startIndex, setStartIndex] = useState(0)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (!loading) return
@@ -27,7 +24,10 @@ const SongsList = forwardRef((props, refs) => {
   }, [loading, startIndex, totalCount])
 
   const selectItem = (e, index) => {
-    console.log('selectItem index: ', index)
+    dispatch(changePlayList(songs))
+    dispatch(changeSequencePlayList(songs))
+    dispatch(changeCurrentIndex(index))
+    addMusicAnimation(e.nativeEvent.clientX, e.nativeEvent.clientY)
   }
 
   const songList = list => {
