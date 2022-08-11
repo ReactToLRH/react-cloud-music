@@ -35,7 +35,6 @@ const Singers = () => {
   }, [dispatch])
 
   const enterDetail = id => {
-    console.log('singers detail id: ', id)
     navigate(`/singers/${id}`)
   }
 
