@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router'
 import { CSSTransition } from 'react-transition-group'
 import Header from '@/baseUI/Header'
 import Scroll from '@/baseUI/Scroll'
+import MusicNote from '@/baseUI/MusicNote'
 import AlbumDetail from '@/components/AlbumDetail'
 import { Container } from './style'
 
@@ -25,6 +26,7 @@ const Album = () => {
   const [isMarquee, setIsMarquee] = useState(false)
 
   const headerRef = useRef()
+  const musicNoteRef = useRef()
 
   const { currentAlbum, pullUpLoading } = useSelector(state => state.album, shallowEqual)
 
@@ -61,6 +63,10 @@ const Album = () => {
     changePullUpLoading(false)
   }
 
+  const addMusicAnimation = (x, y) => {
+    musicNoteRef.current.startAnimation({ x, y })
+  }
+
   return (
     <CSSTransition
       in={showStatus}
@@ -81,9 +87,14 @@ const Album = () => {
             pullUpLoading={pullUpLoading}
             bounceTop={false}
           >
-            <AlbumDetail currentAlbum={currentAlbum} pullUpLoading={pullUpLoading} />
+            <AlbumDetail
+              currentAlbum={currentAlbum}
+              pullUpLoading={pullUpLoading}
+              addMusicAnimation={addMusicAnimation}
+            />
           </Scroll>
         ) : null}
+        <MusicNote ref={musicNoteRef} />
       </Container>
     </CSSTransition>
   )

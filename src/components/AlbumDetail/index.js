@@ -4,7 +4,7 @@ import SongsList from '@/application/SongsList'
 import { TopDesc, Menu } from './style'
 
 const AlbumDetail = props => {
-  const { currentAlbum, pullUpLoading, musicAnimation } = props
+  const { currentAlbum, pullUpLoading, addMusicAnimation } = props
 
   const renderTopDesc = () => (
     <TopDesc background={currentAlbum.coverImgUrl}>
@@ -56,7 +56,7 @@ const AlbumDetail = props => {
     <SongsList
       songs={currentAlbum.tracks}
       collectCount={currentAlbum.subscribedCount}
-      musicAnimation={musicAnimation}
+      addMusicAnimation={addMusicAnimation}
       loading={pullUpLoading}
       showCollect
       showBackground
