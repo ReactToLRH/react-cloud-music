@@ -69,3 +69,23 @@ export const getSingerInfoRequest = (params, custom) =>
     },
     custom
   )
+
+export const getSongDetailRequest = (params, custom) =>
+  request(
+    {
+      url: '/song/detail',
+      method: 'get',
+      params
+    },
+    custom
+  )
+
+export const getLyricRequest = (params, custom) =>
+  request(
+    {
+      url: '/lyric',
+      method: 'get',
+      params
+    },
+    custom
+  )
