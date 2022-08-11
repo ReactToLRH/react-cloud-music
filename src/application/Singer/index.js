@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router'
 import { CSSTransition } from 'react-transition-group'
 import Header from '@/baseUI/Header'
 import Scroll from '@/baseUI/Scroll'
+import MusicNote from '@/baseUI/MusicNote'
 import SongsList from '../SongsList'
 import { Container, ImgWrapper, CollectButton, SongListWrapper, BgLayer } from './style'
 
@@ -16,7 +17,6 @@ const Singer = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const params = useParams()
-  console.log('Singer params: ', params)
 
   const initialHeight = useRef(0)
   const [showStatus, setShowStatus] = useState(true)
@@ -27,6 +27,7 @@ const Singer = () => {
   const songScrollRef = useRef()
   const headerRef = useRef()
   const layerRef = useRef()
+  const musicNoteRef = useRef()
 
   const { artist, songsOfArtist: songs } = useSelector(state => state.singer, shallowEqual)
 
@@ -40,6 +41,10 @@ const Singer = () => {
     layerRef.current.style.top = `${h - OFFSET}px`
     songScrollRef.current.refresh()
   }, [])
+
+  const addMusicAnimation = (x, y) => {
+    musicNoteRef.current.startAnimation({ x, y })
+  }
 
   const setShowStatusFalse = useCallback(() => {
     setShowStatus(false)
@@ -105,9 +110,15 @@ const Singer = () => {
         <BgLayer ref={layerRef} />
         <SongListWrapper ref={songScrollWrapperRef}>
           <Scroll onScroll={handleScroll} ref={songScrollRef}>
-            <SongsList songs={songs} showCollect={false} usePageSplit={false} />
+            <SongsList
+              songs={songs}
+              showCollect={false}
+              usePageSplit={false}
+              addMusicAnimation={addMusicAnimation}
+            />
           </Scroll>
         </SongListWrapper>
+        <MusicNote ref={musicNoteRef} />
       </Container>
     </CSSTransition>
   )
