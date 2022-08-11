@@ -6,6 +6,7 @@ import rankReducer from '@/application/Rank/store'
 import albumReducer from '@/application/Album/store'
 import singerReducer from '@/application/Singer/store'
 import playerReducer from '@/application/Player/store'
+import searchReducer from '@/application/Search/store'
 
 const store = configureStore({
   reducer: {
@@ -14,7 +15,8 @@ const store = configureStore({
     rank: rankReducer,
     album: albumReducer,
     singer: singerReducer,
-    player: playerReducer
+    player: playerReducer,
+    search: searchReducer
   }
 })
 

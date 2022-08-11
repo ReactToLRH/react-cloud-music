@@ -89,3 +89,33 @@ export const getLyricRequest = (params, custom) =>
     },
     custom
   )
+
+export const getHotKeyWordsRequest = (params, custom) =>
+  request(
+    {
+      url: '/search/hot',
+      method: 'get',
+      params
+    },
+    custom
+  )
+
+export const getSuggestListRequest = (params, custom) =>
+  request(
+    {
+      url: '/search/suggest',
+      method: 'get',
+      params
+    },
+    custom
+  )
+
+export const getResultSongsListRequest = (params, custom) =>
+  request(
+    {
+      url: '/search',
+      method: 'get',
+      params
+    },
+    custom
+  )
